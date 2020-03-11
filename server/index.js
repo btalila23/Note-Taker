@@ -11,7 +11,9 @@ app.get('/', (_, res) => {
 
 app.get('/notes', (_, res) => {
     const filePath = path.resolve(__dirname, '..', 'public', 'notes.html');
+    console.log(filePath)
     res.sendFile(filePath)
+
 });
 
 app.listen(port, () =>{ 
