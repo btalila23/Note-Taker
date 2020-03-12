@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+app.use(express.static('public'));
+
 app.get('/', (_, res) => {
     const filePath = path.resolve(__dirname, '..', 'public', 'index.html');
     res.sendFile(filePath)
@@ -11,9 +13,20 @@ app.get('/', (_, res) => {
 
 app.get('/notes', (_, res) => {
     const filePath = path.resolve(__dirname, '..', 'public', 'notes.html');
-    console.log(filePath)
+    
     res.sendFile(filePath)
 
+});
+
+app.get('/assets/js.index.js', (_, res) => {
+    const filePath = path.resolve(__dirname, '..', 'public', 'notes.html');
+    
+    res.sendFile(filePath)
+
+});
+
+app.use('*', (_, res) => {
+    res.redirect('/');
 });
 
 app.listen(port, () =>{ 
