@@ -5,6 +5,10 @@ const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
 
 let activeNote = {};
+const handleNoteDelete = function(){
+  activeNote = {};
+  renderActiveNote ();
+};
 
 const getNotes = function() {
     return $.ajax({
