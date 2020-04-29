@@ -14,13 +14,13 @@ async function readData() {
 	return data;
 }
 
-apiRouter.get('/notes', async (_, res) => {
+apiRouter.get('/notes', async (_, res)) => {
 	const data = await readData();
 
 	res.json(Object.values(data));
 });
 
-apiRouter.post('/notes', async (req, res) => {
+apiRouter.post('/notes', async (req, res)) => {
 	const data = await readData();
 
 	const { title, text } = req.body;
@@ -40,15 +40,19 @@ apiRouter.post('/notes', async (req, res) => {
 	});
 });
 
-apiRouter.delete('/notes/:id', async (req, res) => {
+apiRouter.delete('/notes/:id', async (req, res)) => {
 	let data = await readData();
 
 	const noteId = req.params.id;
+data.id={}
+data.title={}
+data.text={}
 
-	if (data[noteId]) {
+data.text += 'delete'
+	/*if (data[noteId]) {
 		delete data[noteId];
 	}
-
+*/
 	await fs.writeFile(dbFilePath, JSON.stringify(data));
 
 	res.json({
